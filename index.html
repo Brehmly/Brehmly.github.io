@@ -5,8 +5,13 @@
             <input id="groceryAmount">Grocery Amount</input><br>
             <input id="gallons">Total Gallons</input><br>
             <button onclick = "return compare()">Compare</button>
+            <button onclick = "return filterOrders(createOrders())">Generate Orders</button>
+            <p id='orders'></p>
+
         </body>
     </header>
+    <script src = 'chance.js'>
+    </script>
     <script>
         let tiers = [
             {gTier1: 0.02, fTier: 0.1},
@@ -41,9 +46,62 @@
             {gTier1: 0.2, fTier: 3}
         ]
         let savings = [];
+        let fakeOrders = [];
+        let filteredOrders = [];
+        createOrders =()=>{
+            var chance = new Chance();
+            let order = 0;
+            for (let i = 0; i < 25; i++){
+                if(i%2 == 0){
+                    order = chance.floating({
+                        fixed: 5, min: 0, max: 200
+                    });
+                    order = parseFloat(order.toFixed(2));
+                    fakeOrders.push(order);
+                } else {
+                    order = chance.floating({
+                        fixed: 5, min: 100, max: 200
+                    });
+                    order = parseFloat(order.toFixed(2));
+                    fakeOrders.push(order);
+                }
+            }
+            return fakeOrders;
+        }
+        function calcMedian(numbers) {
+            const mid = Math.floor(numbers.length / 2),
+            nums = [...numbers].sort((a, b) => a - b);
+            return numbers.length % 2 !== 0 ? nums[mid] : (nums[mid - 1] + nums[mid]) / 2;
+        }
+        filterOrders = (array) => {
+            let gas = 0;
+            let values, q1 = [], q3 = [], median, total = 0, average= 0;
+            values = array.slice().sort(function(a,b){return a-b});
+            median = calcMedian(values);
+            for(let i = 0; i < values.length; i++){
+                if(values[i] < median){
+                    
+                    q1.push(values[i]);
+                } else if( values[i] > median) {
+                    q3.push(values[i]);
+                } else {
+                    q3.push(values[i]);
+                }
+            }
+            for(let i = 0; i<q3.length; i++){
+                total += q3[i];
+            }
+            average = total/q3.length;
+            average = average.toFixed(2);
+            gas = chance.floating({
+                fixed: 4, min: 9, max: 17
+            })
+            document.getElementById('gallons').value = gas;
+            document.getElementById('groceryAmount').value = average;
+            compare();
+        }
         compare = ()=>{
             let test = document.getElementById('table');
-            console.log(test);
             if(test === null){
                 createTable();
             } else {
@@ -100,7 +158,7 @@
 
                 cell = row.insertCell(2);
                 cell.id = i;
-                cell.innerHTML = gTotal;
+                cell.innerHTML = gTotal.toFixed(2);
 
                 cell = row.insertCell(3);
                 cell.innerHTML = gallons;
@@ -110,7 +168,7 @@
 
                 cell = row.insertCell(5);
                 cell.id = 'fuel' + j;
-                cell.innerHTML = fTotal;
+                cell.innerHTML = fTotal.toFixed(2);
             }
             document.body.appendChild(table);
             checkValue();
@@ -125,6 +183,9 @@
                 } else if(parseInt(document.getElementById('fuel' + j).innerHTML,10) > parseInt(document.getElementById(i).innerHTML,10)){
                     document.getElementById('fuel' + j).style.backgroundColor = "green";
                     document.getElementById(i).style.backgroundColor = "red";
+                } else {
+                    document.getElementById('fuel' +j).style.backgroundColor = 'blue';
+                    document.getElementById(i).style.backgroundColor = 'blue';
                 }
             }
         }
