@@ -9,22 +9,32 @@
 
 
         <body>
-            
-            <div class="form-group">
-                <h1>Fuel Perks Savings Calculator</h1>
-                <div class="col-xs-2">
-                    <label for="groceryAmount">Grocery Amount</label> 
-                    <input class = "form-control mb-2" id="groceryAmount"></input><br>
+            <div class = "container">
+                <h2>Fuel Perks Savings Calculator</h2>
+                <div class="form-row"> 
+                    <div class="col-xs-2">
+                        <label for="groceryAmount">Grocery Amount</label> 
+                        <input class = "form-control mb-2" id="groceryAmount"></input>
+                    </div>
+                    <div class="col-xs-2">
+                        <label for="gallons">Total Gallons</label>
+                        <input class = "form-control" id="gallons"></input>
+                    </div>
+                    <div>
+                        
+                    </div>
+                    
+                    
                 </div>
-                <div class="col-xs-2">
-                    <label for="gallons">Total Gallons</label>
-                    <input class = "form-control" id="gallons"></input><br>
-                </div>
-                <div>
-                    <button class = "btn btn-primary" onclick = "return compare()">Compare</button><br><br>
-                </div>
-                    <button class = "btn btn-primary" onclick = "return filterOrders(createOrders())">Generate Orders</button>
-                <p id='orders'></p>
+                
+                    <div class="btn-group mr-2">
+                        <button class = "btn btn-primary" onclick = "return compare()">Compare</button>
+                    </div>
+                    <div class="btn-group mr-2">
+                        <button class = "btn btn-primary" onclick = "return filterOrders(createOrders())">Generate Orders</button>
+                    </div>
+                    
+                    <p id='orders'></p>
             </div>
 
         </body>
@@ -131,7 +141,7 @@
         createTable =()=>{
             let table = document.createElement("table");
             table.id = 'table';
-            table.classList.add("table")
+            table.classList.add("table-responsive")
             let row1 = table.insertRow(0);
 
             th = document.createElement("th");
