@@ -139,9 +139,11 @@
             }
         }
         createTable =()=>{
+            let responsive = document.createElement("table");
+            responsive.classList.add("table-responisve");
             let table = document.createElement("table");
             table.id = 'table';
-            table.classList.add("table-responsive")
+            table.classList.add("table")
             let row1 = table.insertRow(0);
 
             th = document.createElement("th");
