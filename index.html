@@ -19,11 +19,7 @@
                     <div class="col-xs-2">
                         <label for="gallons">Total Gallons</label>
                         <input class = "form-control" id="gallons"></input>
-                    </div>
-                    <div>
-                        
-                    </div>
-                    
+                    </div><br>
                     
                 </div>
                 
@@ -43,36 +39,36 @@
     </script>
     <script>
         let tiers = [
-            {gTier1: 0.02, fTier: 0.1},
-            {gTier1: 0.04, fTier: 0.2},
-            {gTier1: 0.06, fTier: 0.3},
-            {gTier1: 0.08, fTier: 0.4},
-            {gTier1: 0.1, fTier: 0.5},
-            {gTier1: 0.12, fTier: 0.6},
-            {gTier1: 0.14, fTier: 0.7},
-            {gTier1: 0.16, fTier: 0.8},
-            {gTier1: 0.18, fTier: 0.9},
-            {gTier1: 0.2, fTier: 1},
-            {gTier1: 0.2, fTier: 1.1},
-            {gTier1: 0.2, fTier: 1.2},
-            {gTier1: 0.2, fTier: 1.3},
-            {gTier1: 0.2, fTier: 1.4},
-            {gTier1: 0.2, fTier: 1.5},
-            {gTier1: 0.2, fTier: 1.6},
-            {gTier1: 0.2, fTier: 1.7},
-            {gTier1: 0.2, fTier: 1.8},
-            {gTier1: 0.2, fTier: 1.9},
-            {gTier1: 0.2, fTier: 2},
-            {gTier1: 0.2, fTier: 2.1},
-            {gTier1: 0.2, fTier: 2.2},
-            {gTier1: 0.2, fTier: 2.3},
-            {gTier1: 0.2, fTier: 2.4},
-            {gTier1: 0.2, fTier: 2.5},
-            {gTier1: 0.2, fTier: 2.6},
-            {gTier1: 0.2, fTier: 2.7},
-            {gTier1: 0.2, fTier: 2.8},
-            {gTier1: 0.2, fTier: 2.9},
-            {gTier1: 0.2, fTier: 3}
+            {gTier1: 0.02, fTier: 0.1, amount: 50},
+            {gTier1: 0.04, fTier: 0.2, amount: 100},
+            {gTier1: 0.06, fTier: 0.3, amount: 150},
+            {gTier1: 0.08, fTier: 0.4, amount: 200},
+            {gTier1: 0.1, fTier: 0.5, amount: 250},
+            {gTier1: 0.12, fTier: 0.6, amount: 300},
+            {gTier1: 0.14, fTier: 0.7, amount: 350},
+            {gTier1: 0.16, fTier: 0.8, amount: 400},
+            {gTier1: 0.18, fTier: 0.9, amount: 450},
+            {gTier1: 0.2, fTier: 1, amount: 500},
+            {gTier1: 0.2, fTier: 1.1, amount: 550},
+            {gTier1: 0.2, fTier: 1.2, amount: 600},
+            {gTier1: 0.2, fTier: 1.3, amount: 650},
+            {gTier1: 0.2, fTier: 1.4, amount: 700},
+            {gTier1: 0.2, fTier: 1.5, amount: 750},
+            {gTier1: 0.2, fTier: 1.6, amount: 800},
+            {gTier1: 0.2, fTier: 1.7, amount: 850},
+            {gTier1: 0.2, fTier: 1.8, amount: 900},
+            {gTier1: 0.2, fTier: 1.9, amount: 950},
+            {gTier1: 0.2, fTier: 2, amount: 1000},
+            {gTier1: 0.2, fTier: 2.1, amount: 1050},
+            {gTier1: 0.2, fTier: 2.2, amount: 1100},
+            {gTier1: 0.2, fTier: 2.3, amount: 1150},
+            {gTier1: 0.2, fTier: 2.4, amount: 1200},
+            {gTier1: 0.2, fTier: 2.5, amount: 1250},
+            {gTier1: 0.2, fTier: 2.6, amount: 1300},
+            {gTier1: 0.2, fTier: 2.7, amount: 1350},
+            {gTier1: 0.2, fTier: 2.8, amount: 1400},
+            {gTier1: 0.2, fTier: 2.9, amount: 1450},
+            {gTier1: 0.2, fTier: 3, amount: 1500}
         ]
         let savings = [];
         let fakeOrders = [];
@@ -143,7 +139,9 @@
             responsive.classList.add("table-responisve");
             let table = document.createElement("table");
             table.id = 'table';
-            table.classList.add("table")
+            table.classList.add("table");
+            table.classList.add("table-condensed");
+            table.classList.add("table-striped");
             let row1 = table.insertRow(0);
 
             th = document.createElement("th");
