@@ -3,9 +3,15 @@
         <body>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <h1>Fuel Perks Savings Calculator</h1>
+            <div>
             <input id="groceryAmount">Grocery Amount</input><br>
-            <input id="gallons">Total Gallons</input><br>
-            <button onclick = "return compare()">Compare</button>
+            </div>
+            <div>
+                <input id="gallons">Total Gallons</input><br>
+            </div>
+            <div>
+                <button onclick = "return compare()">Compare</button><br>
+            </div>
             <button onclick = "return filterOrders(createOrders())">Generate Orders</button>
             <p id='orders'></p>
 
